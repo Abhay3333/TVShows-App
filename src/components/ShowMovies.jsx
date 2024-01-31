@@ -20,7 +20,7 @@ const ShowMovies = () => {
   return (
     <div className="container mx-auto h-100% p-4 bg-blue-950">
       <h2 className="text-3xl font-bold mb-4 text-white">TV Shows</h2>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 ">
         {shows.map((show) => (
           <Link
             to={`/show/${show.show.id}`}
@@ -45,14 +45,18 @@ const ShowMovies = () => {
               />
 
               <div className="text-white">
-                <h3 className="text-xl font-semibold mb-2 ">
+                <h3 className="text-lg sm:text-xl font-semibold mb-2">
                   {show.show.name}
                 </h3>
-                <p className="text-white">Language: {show.show.language}</p>
-                <p className="text-white">
+                <p className="text-sm sm:text-base text-white">
+                  Language: {show.show.language}
+                </p>
+                <p className="text-sm sm:text-base text-white">
                   Genres: {show.show.genres.join(", ")}
                 </p>
-                <p className="text-white">Rating: {show.show.rating.average}</p>
+                <p className="text-sm sm:text-base text-white">
+                  Rating: {show.show.rating.average}
+                </p>
               </div>
             </li>
           </Link>

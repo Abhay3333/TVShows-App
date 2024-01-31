@@ -56,26 +56,32 @@ const ShowDetails = () => {
   }
 
   return (
-    <div className="container mx-auto h-screen p-10 flex bg-blue-950 justify-center items-center">
-      <div className="mr-8 ">
+    <div className="container mx-auto p-4 md:p-8 lg:p-12 xl:p-16 flex flex-col items-center bg-blue-950 min-h-screen">
+      <div className="mr-8 flex-grow">
         <img
           src={show.image ? show.image.medium : "placeholder-url.jpg"}
           alt={show.name}
-          className="mb-4 rounded h-96 w-[670px] ml-4 "
+          className="mb-4 rounded h-96 w-full md:w-[670px] lg:w-[800px] xl:w-[700px] "
         />
       </div>
 
-      <div>
+      <div className="text-center">
         <h2 className="text-3xl font-bold mb-4 text-white">{show.name}</h2>
 
-        <div className="flex items-center mb-2">
-          <p className="text-white mr-4">Language: {show.language}</p>
-          <p className="text-white mr-4">Genres: {show.genres.join(", ")}</p>
-          <p className="text-white">Rating: {show.rating.average}</p>
+        <div className="flex flex-col md:flex-row items-center mb-2">
+          <p className="text-white mb-2 md:mb-0 md:mr-4">
+            Language: {show.language}
+          </p>
+          <p className="text-white mb-2 md:mb-0 md:mr-4">
+            Genres: {show.genres.join(", ")}
+          </p>
+          <p className="text-white mb-2 md:mb-0 md:mr-4">
+            Rating: {show.rating.average}
+          </p>
         </div>
 
         <p
-          className="text-white"
+          className="text-white mb-4 px-2 md:px-0"
           dangerouslySetInnerHTML={{ __html: show.summary }}
         />
 
@@ -88,7 +94,10 @@ const ShowDetails = () => {
 
         {bookingFormVisible && (
           <div className="mt-4 justify-center items-center">
-            <form onSubmit={handleFormSubmit}>
+            <form
+              onSubmit={handleFormSubmit}
+              className="flex flex-col items-center"
+            >
               <input type="hidden" name="movieName" value={show.name} />
 
               <label className="block mb-2 text-white">Movie Name:</label>
